@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+body {
+  background: #141414;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movie-app > .row {
+  overflow-x: auto;
+  flex-wrap: nowrap;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.image-container {
+  position:relative;
+  transition: transform 0.2s;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.image-container:hover {
+  transform: scale(1.07);
 }
-
-.App-link {
-  color: #61dafb;
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  width: 100%;
+  height:0;
+  overflow: hidden;
+  font-size: 20px;
+  opacity: 0;
+  transition: 0.5s ease;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.image-container:hover .overlay{
+  cursor: pointer;
+  height: 20%;
+  opacity: 1;
 }
+.fas{
+  padding-left: 5px;
+  padding-top: 5px;
+}
+.fa-heart{
+  color:red;
+}
+::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #868686;
+}
+::-webkit-scrollbar{
+	height: 14px;
+	width: 12px;
+}
+::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: rgb(48, 48, 48);
+}
+/*
+<div className="container">
+      <div className="row">
+        {props.movies.map((movie, index) => (
+          <div className="col-3 mt-3">
+            <div className="card h-100">
+              <img src={movie.Poster} alt="movie" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+*/
