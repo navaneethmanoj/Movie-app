@@ -2,7 +2,6 @@ import React from "react";
 import AddToFavorites from "./AddToFavorites";
 
 const MovieList = (props) => {
-  const FavoriteComponent = props.favoriteComponent;
   const handleFavoriteClick = props.handleFavoriteClick;
   return (
     <>
