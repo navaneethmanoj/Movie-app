@@ -5,7 +5,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
 }
-
 .movie-app > .row {
   overflow-x: auto;
   flex-wrap: nowrap;
@@ -17,6 +16,9 @@ body {
 .image-container:hover {
   transform: scale(1.07);
 }
+.movie-poster{
+  height: 300px;
+}
 .overlay {
   position: absolute;
   bottom: 0;
@@ -26,7 +28,7 @@ body {
   width: 100%;
   height:0;
   overflow: hidden;
-  font-size: 20px;
+  font-size: 14px;
   opacity: 0;
   transition: 0.5s ease;
 }
@@ -57,6 +59,14 @@ body {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: rgb(48, 48, 48);
+}
+@media screen and (max-width:400px){
+  .movie-poster{
+    height: 200px;
+  }
+  .overlay{
+    font-size: 10px;
+  }
 }
 /*
 <div className="container">

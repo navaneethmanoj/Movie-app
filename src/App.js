@@ -3,17 +3,16 @@ import "./App.css";
 import MovieList from "./components/MovieList";
 import SearchBox from "./components/SearchBox";
 import Heading from "./components/Heading";
-require('dotenv').config()
+require("dotenv").config();
 
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [favorites, setFavorites] = useState([]);
-  const apikey = process.env.REACT_APP_APIKEY
+  const apikey = process.env.REACT_APP_APIKEY;
 
   const getMovieRequest = async (searchValue) => {
     const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=${apikey}`;
-    console.log(url);
     const response = await fetch(url);
     const responseJson = await response.json();
 
@@ -28,11 +27,13 @@ const App = () => {
     );
   };
   const addFavorite = (movie) => {
-    const newFavorites = [...favorites, movie];
-    alert(movie.Title);
-    console.log(newFavorites);
-    setFavorites(newFavorites);
-    saveToLocalStorage(newFavorites);
+    if (!favorites.includes(movie)) {
+      console.log(!favorites.includes(movie))
+      const newFavorites = [...favorites, movie];
+      alert(movie.Title);
+      setFavorites(newFavorites);
+      saveToLocalStorage(newFavorites);
+    }
   };
   const removeFavorite = (movie) => {
     const newFavorites = favorites.filter(
@@ -56,11 +57,9 @@ const App = () => {
 
   return (
     <div className="container movie-app">
-      <div className="row mt-5">
-        <div className="col-4 d-none d-sm-block"></div>
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
-        <div className="col-4 d-none d-sm-block"></div>
-      </div>
+      <div className='row d-flex align-items-center justify-content-center mt-4 mb-4'>
+				<SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+			</div>
       {movies.length > 0 && (
         <div className="row">
           <Heading heading="Results" />
